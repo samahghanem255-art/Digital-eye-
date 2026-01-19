@@ -1,0 +1,171 @@
+:root {
+    --blue:#2563eb;
+    --dark:#1e40af;
+}
+
+body {
+    margin:0;
+    font-family:Tahoma;
+    background:#f8fafc;
+}
+
+/* HEADER */
+.header {
+    background:white;
+    padding:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.nav-bar {
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo-text {
+    font-weight:bold;
+    font-size:1.5rem;
+    color:var(--blue);
+}
+
+.nav-links {
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a {
+    text-decoration:none;
+    color:var(--dark);
+}
+
+/* HERO */
+.hero {
+    min-height:100vh;
+    background:linear-gradient(135deg,var(--blue),var(--dark));
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    text-align:center;
+}
+
+.hidden {
+    opacity:0;
+    transform:translateY(20px);
+    transition:1s;
+}
+
+.logo {
+    width:160px;
+    animation:float 2.5s ease-in-out infinite;
+}
+
+.hero h1 {
+    font-size:3rem;
+    margin:0;
+}
+
+.hero p {
+    font-size:1.5rem;
+    opacity:.9;
+}
+
+.hero button {
+    background:white;
+    color:var(--blue);
+    padding:14px 40px;
+    border:none;
+    border-radius:50px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.hero button:hover {
+    transform:translateY(-4px);
+}
+
+/* SERVICES */
+.services {
+    max-width:1200px;
+    margin:auto;
+    padding:4rem 1rem;
+    text-align:center;
+}
+
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.card {
+    background:white;
+    padding:1rem;
+    border-radius:12px;
+    border-top:4px solid var(--blue);
+}
+
+.card button {
+    background:var(--blue);
+    color:white;
+    border:none;
+    padding:8px 16px;
+    margin-top:10px;
+}
+
+/* STATS */
+.stats {
+    background:white;
+    padding:4rem 1rem;
+    text-align:center;
+}
+
+.stats-grid {
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.circle svg {
+    width:120px;
+    transform:rotate(-90deg);
+}
+
+circle {
+    fill:none;
+    stroke-width:10;
+    stroke:#e5e7eb;
+}
+
+.progress {
+    stroke:var(--blue);
+    stroke-dasharray:314;
+    stroke-dashoffset:314;
+    transition:1s;
+}
+
+/* CONTACT */
+.contact {
+    padding:3rem 1rem;
+    text-align:center;
+}
+
+footer {
+    background:var(--dark);
+    color:white;
+    padding:1rem;
+    text-align:center;
+}
+
+/* ANIMATION */
+@keyframes float {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-8px); }
+}
