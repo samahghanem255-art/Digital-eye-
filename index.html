@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark" data-lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Eye | عين رقمية</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- ===== BREAKING NEWS TICKER ===== -->
+<div class="ticker-wrapper">
+  <div class="ticker-label"><i class="fas fa-bolt"></i> <span data-i18n="breaking">عاجل</span></div>
+  <div class="ticker-track">
+    <div class="ticker-content" id="tickerContent">
+      <span>🔴 الذكاء الاصطناعي يُحدث ثورة في صناعة الإعلام العالمي</span>
+      <span>📡 Digital Eye تطلق منصتها الإعلامية الذكية الشاملة</span>
+      <span>⚡ كشف 1,247 خبراً مزيفاً خلال الأسبوع الماضي</span>
+      <span>🌍 تغطية إخبارية من 80 دولة حول العالم</span>
+      <span>🤖 تحليل المحتوى بدقة 97.3% بفضل الذكاء الاصطناعي</span>
+      <span>📊 رصد السمعة الرقمية لأكثر من 500 مؤسسة إعلامية</span>
+    </div>
+  </div>
+  <div class="ticker-date" id="tickerDate"></div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-logo">
+    <div class="logo-eye">
+      <div class="eye-outer"><div class="eye-inner"><div class="eye-pupil"></div></div></div>
+    </div>
+    <span class="logo-text">Digital Eye</span>
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" class="nav-link active" data-i18n="nav_home"><i class="fas fa-home"></i> الرئيسية</a></li>
+    <li><a href="#news" class="nav-link" data-i18n="nav_news"><i class="fas fa-newspaper"></i> الأخبار</a></li>
+    <li><a href="#videos" class="nav-link" data-i18n="nav_videos"><i class="fas fa-play-circle"></i> الفيديوهات</a></li>
+    <li><a href="#ai-tools" class="nav-link" data-i18n="nav_ai"><i class="fas fa-robot"></i> الذكاء الاصطناعي</a></li>
+    <li><a href="#analytics" class="nav-link" data-i18n="nav_analytics"><i class="fas fa-chart-line"></i> التحليلات</a></li>
+    <li><a href="#studio" class="nav-link" data-i18n="nav_studio"><i class="fas fa-cloud"></i> الاستوديو</a></li>
+    <li><a href="#contact" class="nav-link" data-i18n="nav_contact"><i class="fas fa-envelope"></i> التواصل</a></li>
+  </ul>
+
+  <div class="nav-controls">
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('ar')">ع</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    </div>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+      <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
+    <!-- Mobile Menu -->
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="home" class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="floating-orb orb1"></div>
+    <div class="floating-orb orb2"></div>
+    <div class="floating-orb orb3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="pulse-dot"></span> <span data-i18n="hero_badge">منصة إعلامية ذكية</span></div>
+    <div class="hero-logo-wrap">
+      <img src="https://i.ibb.co/bgV5NSrN/att-q74v-KAKLLei-LL4aq-NBv68need-BE5F8mi-KOl-Ba-E2-DOfc.jpg"
+           alt="Digital Eye Logo" class="hero-logo-img" />
+    </div>
+    <h1 class="hero-title">Digital Eye</h1>
+    <p class="hero-tagline" data-i18n="hero_tagline">عين واحدة... رؤية كاملة</p>
+    <p class="hero-desc" data-i18n="hero_desc">منصة إعلامية متكاملة تجمع بين قوة الذكاء الاصطناعي وتحليل البيانات الضخمة لتقديم تجربة إعلامية استثنائية</p>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num" data-target="97">0</span><span>%</span><div class="stat-label" data-i18n="stat_accuracy">دقة التحليل</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><span class="stat-num" data-target="1247">0</span><span>+</span><div class="stat-label" data-i18n="stat_fake">خبر مزيف مكشوف</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><span class="stat-num" data-target="80">0</span><span></span><div class="stat-label" data-i18n="stat_countries">دولة مغطاة</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><span class="stat-num" data-target="500">0</span><span>+</span><div class="stat-label" data-i18n="stat_sources">مصدر إعلامي</div></div>
+    </div>
+    <div class="hero-cta">
+      <a href="#news" class="btn-primary" data-i18n="cta_explore"><i class="fas fa-compass"></i> استكشف الأخبار</a>
+      <a href="#ai-tools" class="btn-secondary" data-i18n="cta_ai"><i class="fas fa-robot"></i> أدوات الذكاء الاصطناعي</a>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-arrow"></div></div>
+</section>
+
+<!-- ===== NEWS SECTION ===== -->
+<section id="news" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-newspaper"></i></div>
+      <h2 data-i18n="news_title">آخر الأخبار</h2>
+      <p data-i18n="news_sub">تغطية شاملة ومحدثة لحظة بلحظة من مصادر موثوقة حول العالم</p>
+    </div>
+
+    <div class="news-filters">
+      <button class="filter-btn active" onclick="filterNews('all')" data-i18n="filter_all">الكل</button>
+      <button class="filter-btn" onclick="filterNews('tech')" data-i18n="filter_tech">تقنية</button>
+      <button class="filter-btn" onclick="filterNews('politics')" data-i18n="filter_politics">سياسة</button>
+      <button class="filter-btn" onclick="filterNews('economy')" data-i18n="filter_economy">اقتصاد</button>
+      <button class="filter-btn" onclick="filterNews('sports')" data-i18n="filter_sports">رياضة</button>
+    </div>
+
+    <div class="news-grid" id="newsGrid">
+      <!-- News cards generated by JS -->
+    </div>
+
+    <div class="load-more-wrap">
+      <button class="btn-load-more" onclick="loadMoreNews()"><i class="fas fa-sync-alt"></i> <span data-i18n="load_more">تحميل المزيد</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIDEOS SECTION ===== -->
+<section id="videos" class="section alt-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-play-circle"></i></div>
+      <h2 data-i18n="videos_title">الفيديوهات</h2>
+      <p data-i18n="videos_sub">محتوى مرئي حصري وتقارير فيديو من أهم الأحداث العالمية</p>
+    </div>
+    <div class="videos-grid" id="videosGrid">
+      <!-- Videos generated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI TOOLS SECTION ===== -->
+<section id="ai-tools" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-robot"></i></div>
+      <h2 data-i18n="ai_title">أدوات الذكاء الاصطناعي</h2>
+      <p data-i18n="ai_sub">حلول ذكية متقدمة لتحليل ورصد المحتوى الإعلامي</p>
+    </div>
+
+    <div class="ai-tabs">
+      <button class="ai-tab active" onclick="switchAI('fake')" data-i18n="tab_fake"><i class="fas fa-shield-alt"></i> كاشف الأخبار المزيفة</button>
+      <button class="ai-tab" onclick="switchAI('sentiment')" data-i18n="tab_sentiment"><i class="fas fa-brain"></i> تحليل المشاعر</button>
+      <button class="ai-tab" onclick="switchAI('reputation')" data-i18n="tab_reputation"><i class="fas fa-star"></i> رصد السمعة</button>
+      <button class="ai-tab" onclick="switchAI('summary')" data-i18n="tab_summary"><i class="fas fa-compress-alt"></i> تلخيص المحتوى</button>
+    </div>
+
+    <!-- Fake News Detector -->
+    <div class="ai-panel active" id="ai-fake">
+      <div class="ai-card">
+        <div class="ai-card-header">
+          <div class="ai-icon-wrap"><i class="fas fa-shield-alt"></i></div>
+          <div>
+            <h3 data-i18n="fake_title">كاشف الأخبار المزيفة</h3>
+            <p data-i18n="fake_sub">أدخل نص الخبر وسنحلله بالذكاء الاصطناعي</p>
+          </div>
+        </div>
+        <textarea id="fakeNewsInput" class="ai-textarea" placeholder="أدخل نص الخبر هنا للتحقق من صحته..." rows="5"></textarea>
+        <button class="ai-btn" onclick="analyzeFakeNews()">
+          <i class="fas fa-search"></i> <span data-i18n="analyze_btn">تحليل الآن</span>
+        </button>
+        <div class="ai-result" id="fakeNewsResult"></div>
+      </div>
+    </div>
+
+    <!-- Sentiment Analysis -->
+    <div class="ai-panel" id="ai-sentiment">
+      <div class="ai-card">
+        <div class="ai-card-header">
+          <div class="ai-icon-wrap"><i class="fas fa-brain"></i></div>
+          <div>
+            <h3 data-i18n="sentiment_title">تحليل المشاعر والتوجهات</h3>
+            <p data-i18n="sentiment_sub">تحليل عاطفي وتوجهي للنصوص الإعلامية</p>
+          </div>
+        </div>
+        <textarea id="sentimentInput" class="ai-textarea" placeholder="أدخل النص لتحليل مشاعره وتوجهاته..." rows="5"></textarea>
+        <button class="ai-btn" onclick="analyzeSentiment()">
+          <i class="fas fa-heart"></i> <span data-i18n="analyze_sentiment">تحليل المشاعر</span>
+        </button>
+        <div class="ai-result" id="sentimentResult"></div>
+      </div>
+    </div>
+
+    <!-- Reputation Monitor -->
+    <div class="ai-panel" id="ai-reputation">
+      <div class="ai-card">
+        <div class="ai-card-header">
+          <div class="ai-icon-wrap"><i class="fas fa-star"></i></div>
+          <div>
+            <h3 data-i18n="rep_title">رصد السمعة الرقمية</h3>
+            <p data-i18n="rep_sub">تتبع وتحليل سمعة المؤسسات والأشخاص</p>
+          </div>
+        </div>
+        <input type="text" id="repInput" class="ai-input" placeholder="أدخل اسم المؤسسة أو الشخص..." />
+        <button class="ai-btn" onclick="analyzeReputation()">
+          <i class="fas fa-chart-pie"></i> <span data-i18n="analyze_rep">رصد السمعة</span>
+        </button>
+        <div class="ai-result" id="repResult"></div>
+      </div>
+    </div>
+
+    <!-- Content Summary -->
+    <div class="ai-panel" id="ai-summary">
+      <div class="ai-card">
+        <div class="ai-card-header">
+          <div class="ai-icon-wrap"><i class="fas fa-compress-alt"></i></div>
+          <div>
+            <h3 data-i18n="sum_title">تلخيص المحتوى الذكي</h3>
+            <p data-i18n="sum_sub">تلخيص المقالات والتقارير الطويلة في ثوانٍ</p>
+          </div>
+        </div>
+        <textarea id="summaryInput" class="ai-textarea" placeholder="أدخل المقال أو التقرير المراد تلخيصه..." rows="6"></textarea>
+        <button class="ai-btn" onclick="summarizeContent()">
+          <i class="fas fa-magic"></i> <span data-i18n="analyze_sum">تلخيص ذكي</span>
+        </button>
+        <div class="ai-result" id="summaryResult"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ANALYTICS SECTION ===== -->
+<section id="analytics" class="section alt-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-chart-line"></i></div>
+      <h2 data-i18n="analytics_title">البيانات الإعلامية الضخمة</h2>
+      <p data-i18n="analytics_sub">لوحة تحكم تحليلية شاملة للمحتوى الإعلامي العالمي</p>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-icon" style="background:linear-gradient(135deg,#00d4ff,#0066ff)"><i class="fas fa-newspaper"></i></div>
+        <div class="metric-value counter" data-target="48291">0</div>
+        <div class="metric-label" data-i18n="metric_articles">مقال محلل اليوم</div>
+        <div class="metric-change positive">+12.4% <i class="fas fa-arrow-up"></i></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon" style="background:linear-gradient(135deg,#ff6b6b,#ee0979)"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="metric-value counter" data-target="1247">0</div>
+        <div class="metric-label" data-i18n="metric_fake">خبر مزيف مكشوف</div>
+        <div class="metric-change negative">-8.2% <i class="fas fa-arrow-down"></i></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon" style="background:linear-gradient(135deg,#56ab2f,#a8e063)"><i class="fas fa-globe"></i></div>
+        <div class="metric-value counter" data-target="80">0</div>
+        <div class="metric-label" data-i18n="metric_countries">دولة مغطاة</div>
+        <div class="metric-change positive">+5 <i class="fas fa-arrow-up"></i></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon" style="background:linear-gradient(135deg,#f093fb,#f5576c)"><i class="fas fa-users"></i></div>
+        <div class="metric-value counter" data-target="2400000">0</div>
+        <div class="metric-label" data-i18n="metric_users">مستخدم نشط</div>
+        <div class="metric-change positive">+18.7% <i class="fas fa-arrow-up"></i></div>
+      </div>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3 data-i18n="chart_trend">توزيع الأخبار حسب الفئة</h3>
+        <canvas id="categoryChart" width="400" height="250"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3 data-i18n="chart_fake">نسبة الأخبار المزيفة أسبوعياً</h3>
+        <canvas id="fakeChart" width="400" height="250"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3 data-i18n="chart_sources">أبرز المصادر الإخبارية</h3>
+        <div class="sources-list" id="sourcesList"></div>
+      </div>
+      <div class="chart-card">
+        <h3 data-i18n="chart_sentiment">مؤشر المشاعر الإعلامية</h3>
+        <div class="sentiment-meter" id="sentimentMeter"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STUDIO SECTION ===== -->
+<section id="studio" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-cloud"></i></div>
+      <h2 data-i18n="studio_title">الاستوديو السحابي</h2>
+      <p data-i18n="studio_sub">أدوات الإنتاج الإعلامي الاحترافي في متناول يدك</p>
+    </div>
+
+    <div class="studio-grid">
+      <div class="studio-card" onclick="openStudioTool('editor')">
+        <div class="studio-icon"><i class="fas fa-edit"></i></div>
+        <h3 data-i18n="studio_editor">محرر المحتوى</h3>
+        <p data-i18n="studio_editor_desc">محرر نصي ذكي مع اقتراحات تلقائية وتدقيق لغوي</p>
+        <span class="studio-badge">Pro</span>
+      </div>
+      <div class="studio-card" onclick="openStudioTool('graphics')">
+        <div class="studio-icon"><i class="fas fa-image"></i></div>
+        <h3 data-i18n="studio_graphics">مُنشئ الغرافيك</h3>
+        <p data-i18n="studio_graphics_desc">تصميم الإنفوغرافيك والصور الإخبارية تلقائياً</p>
+        <span class="studio-badge">AI</span>
+      </div>
+      <div class="studio-card" onclick="openStudioTool('broadcast')">
+        <div class="studio-icon"><i class="fas fa-broadcast-tower"></i></div>
+        <h3 data-i18n="studio_broadcast">البث المباشر</h3>
+        <p data-i18n="studio_broadcast_desc">بث مباشر احترافي مع تحكم كامل في الجودة</p>
+        <span class="studio-badge">Live</span>
+      </div>
+      <div class="studio-card" onclick="openStudioTool('social')">
+        <div class="studio-icon"><i class="fas fa-share-alt"></i></div>
+        <h3 data-i18n="studio_social">نشر تلقائي</h3>
+        <p data-i18n="studio_social_desc">نشر المحتوى على كل المنصات بضغطة واحدة</p>
+        <span class="studio-badge">Auto</span>
+      </div>
+      <div class="studio-card" onclick="openStudioTool('archive')">
+        <div class="studio-icon"><i class="fas fa-archive"></i></div>
+        <h3 data-i18n="studio_archive">أرشيف سحابي</h3>
+        <p data-i18n="studio_archive_desc">تخزين وفهرسة ذكية لكل محتواك الإعلامي</p>
+        <span class="studio-badge">∞</span>
+      </div>
+      <div class="studio-card" onclick="openStudioTool('team')">
+        <div class="studio-icon"><i class="fas fa-users-cog"></i></div>
+        <h3 data-i18n="studio_team">إدارة الفريق</h3>
+        <p data-i18n="studio_team_desc">تنسيق وتوزيع المهام بين أعضاء الفريق الإعلامي</p>
+        <span class="studio-badge">Team</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section id="contact" class="section alt-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-envelope"></i></div>
+      <h2 data-i18n="contact_title">تواصل معنا</h2>
+      <p data-i18n="contact_sub">نحن هنا للإجابة على استفساراتك على مدار الساعة</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div><h4 data-i18n="contact_address">العنوان</h4><p>الجزائر العاصمة، الجزائر</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <div><h4 data-i18n="contact_phone">الهاتف</h4><p>+213 XX XXX XXXX</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div><h4 data-i18n="contact_email">البريد الإلكتروني</h4><p>info@digitaleye.dz</p></div>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-btn" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="social-btn" title="Telegram"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="submitContact(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label data-i18n="form_name">الاسم الكامل</label>
+            <input type="text" id="contactName" placeholder="أدخل اسمك الكامل" required />
+          </div>
+          <div class="form-group">
+            <label data-i18n="form_email">البريد الإلكتروني</label>
+            <input type="email" id="contactEmail" placeholder="example@email.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form_subject">الموضوع</label>
+          <select id="contactSubject">
+            <option value="" data-i18n="form_select">اختر الموضوع...</option>
+            <option value="inquiry" data-i18n="form_inquiry">استفسار عام</option>
+            <option value="partnership" data-i18n="form_partnership">شراكة إعلامية</option>
+            <option value="technical" data-i18n="form_technical">دعم تقني</option>
+            <option value="advertising" data-i18n="form_advertising">إعلانات</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form_message">رسالتك</label>
+          <textarea id="contactMessage" rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary full-width">
+          <i class="fas fa-paper-plane"></i> <span data-i18n="form_send">إرسال الرسالة</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="logo-eye sm">
+          <div class="eye-outer"><div class="eye-inner"><div class="eye-pupil"></div></div></div>
+        </div>
+        <span>Digital Eye</span>
+      </div>
+      <p data-i18n="footer_desc">منصة إعلامية ذكية تجمع بين الصحافة الرقمية والذكاء الاصطناعي</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer_links">روابط سريعة</h4>
+      <ul>
+        <li><a href="#home" data-i18n="nav_home">الرئيسية</a></li>
+        <li><a href="#news" data-i18n="nav_news">الأخبار</a></li>
+        <li><a href="#videos" data-i18n="nav_videos">الفيديوهات</a></li>
+        <li><a href="#ai-tools" data-i18n="nav_ai">الذكاء الاصطناعي</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer_services">الخدمات</h4>
+      <ul>
+        <li><a href="#" data-i18n="svc_fake">كشف الأخبار المزيفة</a></li>
+        <li><a href="#" data-i18n="svc_rep">رصد السمعة</a></li>
+        <li><a href="#" data-i18n="svc_big">البيانات الضخمة</a></li>
+        <li><a href="#" data-i18n="svc_studio">الاستوديو السحابي</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer_newsletter">النشرة الإخبارية</h4>
+      <p data-i18n="newsletter_desc">اشترك لتلقي أحدث الأخبار والتحليلات مباشرة</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="بريدك الإلكتروني..." id="newsletterEmail"/>
+        <button onclick="subscribeNewsletter()"><i class="fas fa-arrow-left"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-i18n="footer_copy">© 2025 Digital Eye. جميع الحقوق محفوظة.</p>
+    <div class="footer-bottom-links">
+      <a href="#" data-i18n="privacy">سياسة الخصوصية</a>
+      <a href="#" data-i18n="terms">الشروط والأحكام</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
+
+<!-- ===== VIDEO PLAYER MODAL ===== -->
+<div class="video-modal" id="videoModal" onclick="closeVideoModal()">
+  <div class="video-wrapper" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeVideoModal()"><i class="fas fa-times"></i></button>
+    <iframe id="videoFrame" src="" allowfullscreen frameborder="0"></iframe>
+  </div>
+</div>
+
+<!-- ===== NOTIFICATION TOAST ===== -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg"></span></div>
+
+<!-- ===== SCROLL TO TOP ===== -->
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ===== LIVE INDICATOR ===== -->
+<div class="live-indicator" id="liveIndicator">
+  <span class="live-dot"></span>
+  <span data-i18n="live">بث مباشر</span>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
