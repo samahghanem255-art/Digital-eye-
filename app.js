@@ -850,19 +850,64 @@ function openStudioTool(tool) {
   `);
 }
 
-/* ===== CONTACT ===== */
-function submitContact(e) {
+
+/* ===== CONTACT: SUPABASE ===== */
+async function submitContact(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
+
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  const originalHTML = btn.innerHTML;
+
+  const name = document.getElementById('contactName').value.trim();
+  const email = document.getElementById('contactEmail').value.trim();
+  const subject = document.getElementById('contactSubject').value;
+  const message = document.getElementById('contactMessage').value.trim();
+
+  if (!name || !email || !message) {
+    showToast('يرجى ملء جميع الحقول المطلوبة');
+    return;
+  }
+
+  if (!window.supabaseClient) {
+    showToast('الاتصال بقاعدة البيانات غير مهيأ');
+    console.error('window.supabaseClient غير موجود');
+    return;
+  }
+
   btn.disabled = true;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
-  setTimeout(() => {
+  btn.innerHTML =
+    '<i class="fas fa-spinner fa-spin"></i> جارٍ الإرسال...';
+
+  try {
+    const { error } = await window.supabaseClient
+      .from('contact_messages')
+      .insert([{
+        name: name,
+        email: email,
+        subject: subject || null,
+        message: message
+      }]);
+
+    if (error) {
+      console.error('Supabase contact error:', error);
+      showToast('تعذر إرسال الرسالة. تحقق من إعدادات قاعدة البيانات.');
+      return;
+    }
+
+    form.reset();
+    showToast('تم حفظ رسالتك بنجاح! سنتواصل معك قريباً');
+
+  } catch (error) {
+    console.error('Contact submission error:', error);
+    showToast('حدث خطأ في الاتصال. حاول مرة أخرى.');
+
+  } finally {
     btn.disabled = false;
-    btn.innerHTML = '<i class="fas fa-paper-plane"></i> إرسال الرسالة';
-    e.target.reset();
-    showToast('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً');
-  }, 2000);
+    btn.innerHTML = originalHTML;
+  }
 }
+
 
 /* ===== NEWSLETTER ===== */
 function subscribeNewsletter() {
