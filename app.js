@@ -854,15 +854,14 @@ function openStudioTool(tool) {
 /* ===== CONTACT: SUPABASE ===== */
 async function submitContact(e) {
   e.preventDefault();
-
   const form = e.target;
   const btn = form.querySelector('button[type="submit"]');
   const originalHTML = btn.innerHTML;
 
   const name = document.getElementById('contactName').value.trim();
   const email = document.getElementById('contactEmail').value.trim();
-  const subject = document.getElementById('contactSubject').value;
   const message = document.getElementById('contactMessage').value.trim();
+  const subject = document.getElementById('contactSubject')?.value || '';
 
   if (!name || !email || !message) {
     showToast('يرجى ملء جميع الحقول المطلوبة');
@@ -870,22 +869,21 @@ async function submitContact(e) {
   }
 
   btn.disabled = true;
-  btn.innerHTML =
-    '<i class="fas fa-spinner fa-spin"></i> جارٍ الإرسال...';
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جارٍ الإرسال...';
 
   try {
+    // نرسل لجدول messages اللي عندك فعلا
     const { error } = await window.supabaseClient
-      .from('contact_messages')
+      .from('messages')
       .insert([{
-        name: name,
-        email: email,
-        subject: subject || null,
-        message: message
+        nom: name,
+        telephone: email,
+        message: subject ? subject + ' - ' + message : message
       }]);
 
     if (error) {
-      console.error('Supabase contact error:', error);
-      showToast('تعذر إرسال الرسالة. تحقق من إعدادات قاعدة البيانات.');
+      console.error('Supabase error:', error);
+      showToast('خطأ: ' + error.message);
       return;
     }
 
@@ -893,9 +891,8 @@ async function submitContact(e) {
     showToast('تم حفظ رسالتك بنجاح! سنتواصل معك قريباً');
 
   } catch (error) {
-    console.error('Contact submission error:', error);
+    console.error('Contact error:', error);
     showToast('حدث خطأ في الاتصال. حاول مرة أخرى.');
-
   } finally {
     btn.disabled = false;
     btn.innerHTML = originalHTML;
