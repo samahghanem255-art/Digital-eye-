@@ -869,12 +869,6 @@ async function submitContact(e) {
     return;
   }
 
-  if (!window.supabaseClient) {
-    showToast('الاتصال بقاعدة البيانات غير مهيأ');
-    console.error('window.supabaseClient غير موجود');
-    return;
-  }
-
   btn.disabled = true;
   btn.innerHTML =
     '<i class="fas fa-spinner fa-spin"></i> جارٍ الإرسال...';
