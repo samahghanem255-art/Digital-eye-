@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Digital Eye</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+body{font-family:Arial;background:#f5f5f5;padding:20px}
+.login{max-width:350px;margin:100px auto;background:white;padding:30px;border-radius:12px;text-align:center}
+.admin{display:none;max-width:900px;margin:auto;background:white;padding:20px;border-radius:12px}
+.msg{border:1px solid #ddd;padding:15px;margin:10px 0;border-radius:8px}
+input{width:100%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box}
+button{padding:10px 20px;background:black;color:white;border:none;border-radius:8px;cursor:pointer}
+</style>
+</head>
+<body>
+
+<div id="loginBox" class="login">
+<h3>دخول الإدارة</h3>
+<input type="password" id="pass" placeholder="كلمة السر">
+<button onclick="login()">دخول</button>
+<p id="err" style="color:red"></p>
+</div>
+
+<div id="adminBox" class="admin">
+<h2>📩 رسائل العملاء - Digital Eye</h2>
+<button onclick="loadMessages()">تحديث 🔄</button>
+<button onclick="logout()" style="background:red">خروج</button>
+<div id="list"></div>
+</div>
+
+<script>
+const supabaseClient = supabase.createClient(
+  'https://txyaplmxsfvhqztkgesg.supabase.co',
+  'sb_publishable_bi3B6opJuNEhZIm6kUCeVA_QLdDynxj'
+);
+
+function login(){
+  if(document.getElementById('pass').value === 'Samah 123'){
+    localStorage.setItem('admin_ok','yes');
+    showAdmin();
+  } else {
+    document.getElementById('err').innerText = 'كلمة السر خاطئة';
+  }
+}
+function showAdmin(){
+  document.getElementById('loginBox').style.display='none';
+  document.getElementById('adminBox').style.display='block';
+  loadMessages();
+}
+function logout(){
+  localStorage.removeItem('admin_ok');
+  location.reload();
+}
+if(localStorage.getItem('admin_ok')==='yes'){ showAdmin(); }
+
+async function loadMessages(){
+  const { data, error } = await supabaseClient.from('messages').select('*').order('created_at',{ascending:false});
+  if(error){ document.getElementById('list').innerHTML = 'خطأ: '+error.message; return; }
+  document.getElementById('list').innerHTML = data.map(m => `
+    <div class="msg">
+      <b>👤 ${m.nom || ''}</b> - 📞 ${m.telephone || ''}<br>
+      <p>${m.message || ''}</p>
+      <small>${m.created_at ? new Date(m.created_at).toLocaleString('ar-DZ') : ''}</small><br>
+      <button onclick="deleteMsg('${m.id}')" style="background:red;margin-top:8px">حذف</button>
+    </div>
+  `).join('') || 'لا توجد رسائل';
+}
+async function deleteMsg(id){
+  if(!confirm('تحذف الرسالة؟')) return;
+  await supabaseClient.from('messages').delete().eq('id',id);
+  loadMessages();
+}
+</script>
+</body>
+</html>
